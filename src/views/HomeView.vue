@@ -46,16 +46,17 @@ export default {
       this.reconnect();
     },
     websocketOnmessage: function (e) {
-      console.log('监听关闭' + e)
-      console.log("-----接收消息-------", e.data);
+      //console.log('监听关闭' + e)
+      console.log("- - 接收消息 - -", e.data);
     },
     websocketOnclose: function (e) {
       console.log("connection closed (" + e.code + ")");
       this.reconnect();
     },
     websocketSend(text) { // 数据发送
+      const token = "mytoken"
       try {
-        this.websock.send("12345");
+        this.websock.send("12345",{token});
       } catch (err) {
         console.log("send failed (" + err.code + ")");
       }
